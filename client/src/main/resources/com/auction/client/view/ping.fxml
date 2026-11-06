@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.auction.client.controller.PingController"
+      spacing="12" alignment="CENTER" prefWidth="320" prefHeight="180">
+    <Button text="Ping server" onAction="#handlePing"/>
+    <Label fx:id="resultLabel" text="Chưa gọi"/>
+</VBox>
