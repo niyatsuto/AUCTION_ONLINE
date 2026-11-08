@@ -12,7 +12,7 @@ public final class PasswordHasher {
     private PasswordHasher() {
     }
      // Dùng khi ĐĂNG KÝ. Trả về "muối:mãbăm" để lưu vào User.
-    public static String Hash(String password){
+    public static String hash(String password){
         byte[] saltBytes = new byte[16];
         RANDOM.nextBytes(saltBytes);
         String salt = Base64.getEncoder().encodeToString(saltBytes);
