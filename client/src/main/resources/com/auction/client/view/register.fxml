@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.auction.client.controller.RegisterController"
+      alignment="CENTER" spacing="10.0" prefWidth="380.0" prefHeight="460.0">
+    <padding>
+        <Insets top="24.0" right="24.0" bottom="24.0" left="24.0"/>
+    </padding>
+    <Label text="Register" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+    <TextField fx:id="usernameField" promptText="Username" maxWidth="260.0"/>
+    <TextField fx:id="displayNameField" promptText="Display name" maxWidth="260.0"/>
+    <PasswordField fx:id="passwordField" promptText="Password" maxWidth="260.0"/>
+    <PasswordField fx:id="confirmField" promptText="Confirm password" maxWidth="260.0"/>
+    <Label fx:id="messageLabel" style="-fx-text-fill: #c62828;" wrapText="true" maxWidth="260.0"/>
+    <Button fx:id="registerButton" text="Register" defaultButton="true" prefWidth="260.0"
+            onAction="#handleRegister"/>
+    <Button text="Back to login" onAction="#goToLogin"/>
+</VBox>
