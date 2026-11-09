@@ -1,14 +1,29 @@
 package com.auction.server;
 
-import com.auction.common.ServerConfig;
-import io.javalin.Javalin;
+import java.io.IOException;
+import java.net.InetSocketAddress;
+
+import com.auction.server.controller.RegisterHandler;
+import com.auction.server.dao.UserDao;
+import com.auction.server.dao.UserDaoInMemory;
+import com.auction.server.model.service.AuthService;
+import com.sun.net.httpserver.HttpServer;
 
 public class ServerMain {
-  public static void main(String[] args) {
-    Javalin app = Javalin.create();
+    private static final int PORT = 8080;
+    public static void main(String[] args) {
+        try {
+            UserDao userDao = new UserDaoInMemory();
+            AuthService authService = new AuthService(userDao);
 
-    app.get("/api/ping", ctx -> ctx.result("ok"));
+            HttpServer server = HttpServer.create(new InetSocketAddress(PORT), 0);
+            server.createContext("/api/register", new RegisterHandler(authService));
 
-    app.start(ServerConfig.REST_PORT);
-  }
+            server.start();
+            
+        } catch (IOException e){
+            System.out.println("Error while starting the server");
+        }
+
+    }
 }
