@@ -1,4 +1,4 @@
-package com.auction.server.model;
+package com.auction.server.model.entity;
 
 public abstract class Entity{
     private final String id;

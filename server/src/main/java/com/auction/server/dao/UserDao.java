@@ -1,7 +1,8 @@
 package com.auction.server.dao;
 
-import com.auction.server.model.User;
 import java.util.List;
+
+import com.auction.server.model.entity.User;
 
 public interface UserDao{
     

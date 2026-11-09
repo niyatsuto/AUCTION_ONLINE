@@ -1,19 +1,20 @@
 package com.auction.server.dao;
 
-import com.auction.server.model.User;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.auction.server.model.entity.User;
+
 public class UserDaoInMemory implements UserDao{
     private final Map<String, User> userByName = new LinkedHashMap<>();
-    private long lastId =0; // Id lớn nhất đã cấp;
+    private long lastId = 0; // Id lớn nhất đã cấp;
     
     @Override 
     public synchronized String nextId(){
-        lastId = lastId +1;
-        return "U"+lastId;
+        lastId = lastId + 1;
+        return "U" + lastId;
     }
     
     @Override 

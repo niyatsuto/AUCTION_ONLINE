@@ -1,4 +1,4 @@
-package com.auction.server.model;
+package com.auction.server.model.entity;
 
 import com.auction.common.Role;
 
