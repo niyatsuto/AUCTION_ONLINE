@@ -1,4 +1,4 @@
-package dto;
+package com.auction.server.dto;
 
 public class LoginRequestDto {
     private String username;

@@ -1,14 +1,16 @@
-package dto;
+package com.auction.server.dto;
+
+import com.auction.common.Role;
 
 public class UserDto {
     private String username;
     private String id;
     private String email;
-    private String role;
+    private Role role;
 
     public UserDto() {}
 
-    public UserDto(String username, String id, String email, String role) {
+    public UserDto(String username, String id, String email, Role role) {
         this.username = username;
         this.id = id;
         this.email = email;
@@ -39,11 +41,11 @@ public class UserDto {
         return email;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 }

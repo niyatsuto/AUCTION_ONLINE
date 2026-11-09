@@ -1,9 +1,12 @@
-package dto;
+package com.auction.server.dto;
+
+import com.auction.common.Role;
 
 public class RegisterRequestDto {
     private String username;
     private String password;
-    private String role;
+    private String email;
+    private Role role;
 
     public void setUsername(String username) {
         this.username = username;
@@ -21,11 +24,19 @@ public class RegisterRequestDto {
         return password;
     }
 
-    public void setRole(String role) {
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setRole(Role role) {
         this.role = role;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 }
