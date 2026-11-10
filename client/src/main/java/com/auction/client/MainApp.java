@@ -19,7 +19,7 @@ public class MainApp extends Application {
   public void start(Stage stage) {
     stage.setTitle("Đấu giá");
     SceneManager.init(stage);
-    SceneManager.switchTo("ping");   // khi Minh có login.fxml thì đổi thành "login"
+    SceneManager.switchTo("login");   // khi Minh có login.fxml thì đổi thành "login"
   }
 
   public static void main(String[] args) {
