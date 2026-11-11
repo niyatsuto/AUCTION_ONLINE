@@ -7,6 +7,7 @@ public class Session {
   private static final Session INSTANCE = new Session();
 
   private volatile UserDTO currentUser;
+  private volatile int selectedItemId = -1;   // -1 nghĩa là chưa chọn sản phẩm nào
 
   private Session() {
   }
@@ -27,7 +28,16 @@ public class Session {
     return currentUser != null;
   }
 
+  public int getSelectedItemId() {
+    return selectedItemId;
+  }
+
+  public void setSelectedItemId(int itemId) {
+    this.selectedItemId = itemId;
+  }
+
   public void logout() {
     currentUser = null;
+    selectedItemId = -1;
   }
 }
