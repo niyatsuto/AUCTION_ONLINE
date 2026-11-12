@@ -69,4 +69,39 @@ class AuthServiceTest{
          assertEquals("PASSWORD_TOO_SHORT",e.getCode());
          assertFalse(userDao.existsByUsername("linh"));
     }
+    
+    @Test
+    void login_correctPassword_returnsUser(){
+        User registered = authService.register("linh", "matkhau123", "linh@uet.vn", Role.BIDDER);
+        User loggedIn = authService.login("linh", "matkhau123");
+        
+        assertSame(registered, loggedIn);
+    }
+    
+    @Test
+    void login_wrongPassword_throwsInvalidCredentials() {
+        authService.register("linh", "matkhau123", "linh@uet.vn", Role.BIDDER);
+        AuthException e =assertThrows(AuthException.class, 
+            () -> {authService.login("linh", "saimatkhau");});
+            
+        assertEquals("INVALID_CREDENTIALS", e.getCode());
+    }
+    
+    @Test
+    void login_unknownUsername_throwsInvalidCredentials(){
+        authService.register("linh", "matkhau123", "linh@uet.vn", Role.BIDDER);
+        AuthException e =assertThrows(AuthException.class, 
+            () -> {authService.login("khongcoai", "matkhau123");});
+        assertEquals("INVALID_CREDENTIALS", e.getCode());
+    }
+    
+    @Test
+    void login_lockedAccount_throwsAccountLocked(){
+        User user = authService.register("linh", "matkhau123", "linh@uet.vn", Role.BIDDER);
+        user.setActive(false);
+        userDao.save(user);
+        AuthException e =assertThrows(AuthException.class, 
+            () -> {authService.login("linh", "matkhau123");});
+        assertEquals("ACCOUNT_LOCKED", e.getCode());
+    }
 }
