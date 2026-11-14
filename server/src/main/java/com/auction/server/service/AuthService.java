@@ -40,4 +40,25 @@ public class AuthService {
         userDao.save(user);
         return user;
     }
+    
+    public User login(String username, String password){
+        if (username == null || password == null){
+            throw invalidCredentials();
+        }
+        
+        User user = userDao.findByUsername(username.trim());
+        if(user == null || !PasswordHasher.matches(password,user.getPasswordHash())){
+            throw invalidCredentials();
+        }
+        
+        if(!user.isActive()){
+            throw new AuthException("ACCOUNT_LOCKED", "Tài khoản đã bị khoá");
+        }
+        
+        return user;
+    }
+    
+    private static AuthException invalidCredentials(){
+        return new AuthException("INVALID_CREDENTIALS", "Sai tên đăng nhập hoặc mật khẩu");
+    }
 }
